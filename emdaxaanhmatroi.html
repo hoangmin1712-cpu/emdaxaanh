@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gửi người anh yêu nhất... ❤️</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Quicksand:wght@300;500;700&display=swap');
+
+        body, html {
+            margin: 0; padding: 0; height: 100%; width: 100%;
+            font-family: 'Quicksand', sans-serif; background: #000;
+            overflow: hidden; color: #fff;
+        }
+
+        /* Video nền cực suy */
+        #bg-video {
+            position: fixed; right: 0; bottom: 0;
+            min-width: 100%; min-height: 100%;
+            z-index: -1; filter: brightness(0.2) blur(2px);
+            object-fit: cover;
+        }
+
+        .overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.8)); z-index: 0;
+        }
+
+        .container {
+            position: relative; z-index: 10;
+            width: 90%; max-width: 500px;
+            margin: auto; top: 50%; transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            padding: 30px; border-radius: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center; box-shadow: 0 40px 100px rgba(0,0,0,0.8);
+        }
+
+        .step { display: none; animation: fadeIn 1.5s ease; }
+        .step.active { display: block; }
+
+        h1 { font-family: 'Dancing Script', cursive; font-size: 30px; color: #ff758c; margin-bottom: 10px; }
+        p { font-size: 14px; line-height: 1.6; opacity: 0.8; margin-bottom: 15px; }
+
+        .memory-img { 
+            width: 100%; height: 180px; object-fit: cover; 
+            border-radius: 12px; margin-bottom: 15px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        textarea, input, select {
+            width: 100%; padding: 10px; background: rgba(0,0,0,0.5);
+            border: 1px solid rgba(255, 117, 140, 0.4); border-radius: 10px;
+            color: white; margin-top: 8px; box-sizing: border-box; outline: none;
+            font-size: 14px;
+        }
+
+        .btn-group { display: flex; gap: 10px; margin-top: 20px; }
+        .btn {
+            flex: 1; background: #ff758c; color: white; border: none;
+            padding: 12px; border-radius: 50px; cursor: pointer;
+            font-weight: bold; transition: 0.3s;
+        }
+        .btn:hover { background: #ff4d6d; transform: scale(1.03); }
+        .btn-back { background: rgba(255,255,255,0.1); }
+
+        .progress-bar { font-size: 10px; color: #888; margin-top: 20px; letter-spacing: 2px; }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    </style>
+</head>
+<body>
+
+<video autoplay muted loop id="bg-video" playsinline>
+    <source src="https://v1.sahil-vids.me/api/videos/download/185906" type="video/mp4">
+    </video>
+<div class="overlay"></div>
+
+<div class="container">
+    <form id="loveForm">
+        <div class="step active" id="s1">
+            <h1>Anh không muốn mất em...</h1>
+            <p>Hôm nay, khi nhìn thấy tấm vé máy bay ấy, thế giới của anh như sụp đổ. Anh ước mình có thể làm gì đó để giữ em lại...</p>
+            <button type="button" class="btn" onclick="next(2)">Mở hộp kỉ niệm ➔</button>
+        </div>
+
+        <div class="step" id="s2">
+            <img src="LINK_ANH_KỶ_NIỆM_1" class="memory-img">
+            <p>1. Em còn nhớ ngày đầu mình gặp nhau chứ? Anh vẫn giữ nụ cười của em hôm ấy trong tim.</p>
+            <input type="text" name="q1" placeholder="Ngày đó em thấy anh thế nào?">
+            <button type="button" class="btn" onclick="next(3)">Tiếp tục...</button>
+        </div>
+
+        <div class="step" id="s3">
+            <p>2. Ở nơi xa xôi ấy, khi mùa đông đến và không có anh bên cạnh, ai sẽ là người sưởi ấm bàn tay em?</p>
+            <textarea name="q2" placeholder="Em có sợ sự cô đơn đó không?"></textarea>
+            <div class="btn-group">
+                <button type="button" class="btn btn-back" onclick="next(2)">Quay lại</button>
+                <button type="button" class="btn" onclick="next(4)">Tiếp tục...</button>
+            </div>
+        </div>
+
+        <div class="step" id="s4">
+            <img src="LINK_ANH_KỶ_NIỆM_2" class="memory-img">
+            <p>3. Anh sợ nhất là sự im lặng của những múi giờ khác nhau. Em có hứa sẽ luôn trả lời tin nhắn của anh không?</p>
+            <select name="q3">
+                <option value="Em hứa">Em hứa, chắc chắn luôn</option>
+                <option value="Em sẽ cố gắng">Em sẽ cố gắng hết sức</option>
+            </select>
+            <div class="btn-group">
+                <button type="button" class="btn btn-back" onclick="next(3)">Quay lại</button>
+                <button type="button" class="btn" onclick="next(5)">Tiếp tục...</button>
+            </div>
+        </div>
+
+        <div class="step" id="s5">
+            <p>4. Nếu bây giờ anh cầu xin em ở lại, vứt bỏ mọi cơ hội ngoài kia để vì tình yêu này, em sẽ chọn gì?</p>
+            <textarea name="q4" placeholder="Đừng dối lòng mình nhé em..."></textarea>
+            <div class="btn-group">
+                <button type="button" class="btn btn-back" onclick="next(4)">Quay lại</button>
+                <button type="button" class="btn" onclick="next(6)">Tiếp tục...</button>
+            </div>
+        </div>
+
+        <div class="step" id="s6">
+            <p>5. Điều gì ở anh mà em sẽ nhớ nhất khi một mình ở xứ sở lạ lẫm?</p>
+            <input type="text" name="q5" placeholder="Nói cho anh biết đi em">
+            <button type="button" class="btn" onclick="next(7)">Tiếp tục...</button>
+        </div>
+
+        <div class="step" id="s7">
+            <p>6. Em có tin rằng chúng mình sẽ vượt qua được hàng nghìn km và những năm tháng xa cách không?</p>
+            <input type="text" name="q6" placeholder="Em có tin vào định mệnh không?">
+            <button type="button" class="btn" onclick="next(8)">Tiếp tục...</button>
+        </div>
+
+        <div class="step" id="s8">
+            <p>7. Nếu một ngày em thấy quá mệt mỏi ở nơi đó, em có quay về bên anh không?</p>
+            <textarea name="q7" placeholder="Anh sẽ luôn ở đây đợi em..."></textarea>
+            <button type="button" class="btn" onclick="next(9)">Tiếp tục...</button>
+        </div>
+
+        <div class="step" id="s9">
+            <h1>Lời hứa cuối...</h1>
+            <p>8. Hãy hứa với anh, dù chuyện gì xảy ra, em vẫn sẽ luôn giữ sức khỏe và yêu thương bản thân mình.</p>
+            <input type="text" name="q8" placeholder="Em hứa với anh nhé?">
+            <button type="button" class="btn" onclick="next(10)">Trang cuối...</button>
+        </div>
+
+        <div class="step" id="s10">
+            <h1>Lời nhắn cho trái tim anh</h1>
+            <p>Hãy viết tất cả những gì em muốn nói trước khi trang web này khép lại. Anh sẽ đọc nó mỗi khi nhớ em.</p>
+            <textarea name="final_msg" rows="4"></textarea>
+            <button type="submit" class="btn" id="btnSubmit">Gửi trọn tình cảm cho anh ❤️</button>
+        </div>
+    </form>
+
+    <div id="done" style="display:none;">
+        <h1 style="font-size: 50px;">✈️ ❤️</h1>
+        <h1>Anh đã nhận được rồi!</h1>
+        <p>Cảm ơn em đã thành thật. Dù thế giới có đổi thay, anh vẫn sẽ đứng đây đợi em trở về. Yêu em vô cùng.</p>
+    </div>
+
+    <div class="progress-bar">KỈ NIỆM SỐ: <span id="cur">1</span>/10</div>
+</div>
+
+<script>
+    const FORM_ID = "xbdaeyge"; // THAY ID CỦA BẠN VÀO ĐÂY
+
+    function next(n) {
+        document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+        document.getElementById('s' + n).classList.add('active');
+        document.getElementById('cur').innerText = n;
+    }
+
+    document.getElementById('loveForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const btn = document.getElementById('btnSubmit');
+        btn.innerText = "ĐANG GỬI TÂM TƯ...";
+        btn.disabled = true;
+
+        const data = new FormData(this);
+        const obj = Object.fromEntries(data.entries());
+
+        fetch(`https://formspree.io/f/${FORM_ID}`, {
+            method: 'POST',
+            body: JSON.stringify(obj),
+            headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' }
+        }).then(() => {
+            document.getElementById('loveForm').style.display = 'none';
+            document.querySelector('.progress-bar').style.display = 'none';
+            document.getElementById('done').style.display = 'block';
+        });
+    });
+</script>
+</body>
+</html>
